@@ -33,6 +33,7 @@ pip install pyinstaller
 # 打包为单文件且隐藏控制台
 pyinstaller --noconsole --onefile Zhi_zip.py
 ```
+- 你也可直接到**Releases**下载`版本号-exe`
 ## 📖 使用指南
 1.点击 “添加文件”（支持按住 Ctrl/Shift 多选）或 “添加文件夹”。
 
