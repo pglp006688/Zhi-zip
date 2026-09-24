@@ -42,5 +42,21 @@ pyinstaller --noconsole --onefile Zhi_zip.py
 3.点击 “开始压缩”，选择保存路径及文件名（默认 .zip）。
 
 4.等待进度条完成即可。
+
+## 改进
+原版 `Zhi-zip` 有一些缺点
+
+1 . `on_finished` 里状态提示立刻被覆盖
+
+> 用户根本看不到完成提示（影响美感）
+
+2 . `ZipWorker.run `完全没有异常处理
+
+> 文件被占用时，异常会直接在线程里吞掉，UI 永远卡在"压缩中"。而且` total == 0 `会 `ZeroDivisionError`。所以我重写了 Worker
+
+3 . 没有解压功能
+
+> 我改了改，设定`zipfile.ZipFile` 在打开时会自动定位 EOCD → 读中央目录 → 建好所有 `ZipInfo` 对象。`zf.namelist()` 能立刻拿到全部文件名。
+
 ## 💻 许可证
 **MIT**
